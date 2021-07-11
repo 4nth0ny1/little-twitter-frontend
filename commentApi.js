@@ -37,4 +37,14 @@ class CommentApi {
 
         form.reset()
     }
+
+    static deleteComment(e){
+        const commentId = e.target.dataset.commentId
+
+        document.getElementById(`comment-${commentId}`).remove()
+
+        fetch(`${commentURL}/${commentId}`, {
+            method: "DELETE"
+        })
+    }
 }

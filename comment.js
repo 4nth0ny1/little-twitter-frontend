@@ -69,6 +69,13 @@ class Comment {
             button.addEventListener('click', () => { div.innerHTML = '' })
         )
 
+        const deleteButton = document.createElement('button')
+        deleteButton.classList.add('delete-comment-button')
+        deleteButton.dataset.commentId = this.id 
+        deleteButton.innerText = "Delete Comment"
+        div.appendChild(deleteButton)
+        deleteButton.addEventListener('click', CommentApi.deleteComment)
+
 
     }
     

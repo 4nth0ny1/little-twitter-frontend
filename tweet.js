@@ -19,13 +19,16 @@ class Tweet {
                 <h1>${this.content}</h1>
             </div>
         `
-        
+        tweetsContainer.appendChild(div)
 
         const viewCommentButton = document.createElement('button')
         viewCommentButton.dataset.tweetId = this.id 
         viewCommentButton.innerText = "View Comments"
         div.appendChild(viewCommentButton)
-        tweetsContainer.appendChild(div)
+
+        viewCommentButton.addEventListener('click', Comment.viewCommentClick)
+
+
     }
 
 

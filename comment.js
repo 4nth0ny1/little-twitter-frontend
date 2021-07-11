@@ -34,6 +34,7 @@ class Comment {
             button.addEventListener('click', () => { div.innerHTML = '' })
         )
     }
+    
 
 
 }

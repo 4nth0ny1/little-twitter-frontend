@@ -44,4 +44,36 @@ class TweetApi {
             method: "DELETE"
         })
     }
+
+    static submitTweetEdit(e){
+        e.preventDefault()
+        const tweetId = e.target.dataset.tweetId
+
+        const container = document.querySelector(`#tweet-${tweetId}`)
+        const form = container.querySelector('.edit-tweet-form')
+
+        const configObj = {
+            method: "PATCH", 
+            headers: {
+                "Content-type": "application/json",
+                "Accept": "application/json"
+            }, 
+            body: JSON.stringify({
+                tweet: {
+                    content: form.querySelector('#tweet-content-input').value
+                }
+            })
+        }
+
+        fetch(`${tweetURL}/${tweetId}`, configObj)
+        .then(res => res.json())
+        .then(data => {
+            const tweet = Tweet.findById(parseInt(data.id))
+            tweet.content = data.content
+            document.querySelector(`#tweet-${tweet.id}`).remove()
+            tweet.render()
+        })
+
+        form.reset()
+    }
 }

@@ -23,6 +23,7 @@ class Tweet {
 
         const viewCommentButton = document.createElement('button')
         viewCommentButton.dataset.tweetId = this.id 
+        viewCommentButton.classList.add('view-comment-button')
         viewCommentButton.innerText = "View Comments"
         div.appendChild(viewCommentButton)
 

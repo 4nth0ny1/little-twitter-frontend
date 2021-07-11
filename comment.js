@@ -12,6 +12,7 @@ class Comment {
     static viewCommentClick(e){
        const tweetId = e.target.dataset.tweetId
        CommentApi.fetch(tweetId)
+
     }
 
     render(){
@@ -27,5 +28,12 @@ class Comment {
             <p class="comment-info">${this.reply}</li>
         `
         tweetDiv.appendChild(div)
+
+        const viewCommentButton = document.querySelectorAll('.view-comment-button')
+        viewCommentButton.forEach(button => 
+            button.addEventListener('click', () => { div.innerHTML = '' })
+        )
     }
+
+
 }

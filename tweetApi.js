@@ -34,4 +34,14 @@ class TweetApi {
 
         form.reset()      
     }
+
+    static deleteTweet(e){
+        const tweetId = e.target.dataset.tweetId
+
+        document.getElementById(`tweet-${tweetId}`).remove()
+
+        fetch(`${tweetURL}/${tweetId}`, {
+            method: "DELETE"
+        })
+    }
 }

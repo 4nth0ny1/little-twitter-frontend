@@ -29,7 +29,14 @@ class Tweet {
 
         viewCommentButton.addEventListener('click', Comment.viewCommentClick)
 
+        const deleteButton = document.createElement('button')
+        deleteButton.classList.add('delete-tweet-button')
+        deleteButton.dataset.tweetId = this.id 
+        deleteButton.innerText = "Delete Tweet"
 
+        div.appendChild(deleteButton)
+
+        deleteButton.addEventListener('click', TweetApi.deleteTweet)
     }
 
 

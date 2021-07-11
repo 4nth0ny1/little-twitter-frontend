@@ -15,7 +15,7 @@ class Comment {
     }
 
     render(){
-        if (document.querySelector(`tweet-${this.tweetId}`)){
+        if (document.querySelector(`#comment-${this.id}`)){
             return
         }
         const tweetDiv = document.querySelector(`#tweet-${this.tweetId}`)

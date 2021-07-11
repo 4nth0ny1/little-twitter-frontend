@@ -8,4 +8,33 @@ class CommentApi {
             comment.render()
         }))
     }
+
+    static submitComment(e){
+        e.preventDefault()
+        const form = e.target
+        const configObj = {
+            method: "POST",
+            headers: {
+                "Content-type": "application/json", 
+                "Accept": "application/json"
+            },
+            body: JSON.stringify({
+                comment: {
+                    reply: form.querySelector('#comment-reply-input').value, 
+                    tweet_id: form.querySelector('#comment-tweet-id').value
+                }
+            })
+        }
+        fetch(commentURL, configObj)
+        .then(res => res.json())
+        .then(data => {
+            let newComment = new Comment(data)
+            newComment.render()
+            const homeContainer = document.querySelector(`#tweet-${newComment.tweetId}`)
+            homeContainer.querySelector('.new-comment-form-container').remove()
+            homeContainer.querySelector('.add-comment-button').classList.remove('d-none')
+        })
+
+        form.reset()
+    }
 }
